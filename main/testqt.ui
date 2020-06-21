@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>411</width>
-    <height>305</height>
+    <width>684</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>75</width>
-      <height>23</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -49,29 +49,19 @@ QPushButton:pressed{
    <widget class="QLineEdit" name="fileName">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>120</x>
       <y>10</y>
-      <width>301</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="screen">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>391</width>
-      <height>171</height>
+      <width>551</width>
+      <height>31</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="Run">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>40</y>
-      <width>111</width>
+      <x>280</x>
+      <y>60</y>
+      <width>121</width>
       <height>31</height>
      </rect>
     </property>
@@ -97,14 +87,24 @@ QPushButton:pressed{
      <string>Run</string>
     </property>
    </widget>
+   <widget class="QTextBrowser" name="textScreen">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>111</y>
+      <width>671</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>411</width>
-     <height>21</height>
+     <width>684</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -113,3 +113,4 @@ QPushButton:pressed{
  <resources/>
  <connections/>
 </ui>
+

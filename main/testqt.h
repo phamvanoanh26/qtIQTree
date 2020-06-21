@@ -21,6 +21,9 @@ private:
 
 private slots:
     void onOpenFile();
+    void runFile();
+    int mainIQTree(int argc, char *argv[]);
 
 };
 #endif // TESTQT_H
+

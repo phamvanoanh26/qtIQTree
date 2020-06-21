@@ -63,32 +63,40 @@
 #include "pda/ecopdmtreeset.h"
 #include "pda/gurobiwrapper.h"
 #include "utils/timeutil.h"
-//#include <unistd.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include "vectorclass/instrset.h"
 
 #include "utils/MPIHelper.h"
-
-
-using namespace std;
-
+#ifdef _OPENMP
+    #include </usr/lib/gcc/x86_64-linux-gnu/7/include/omp.h>
+#endif
 
 #include "testqt.h"
 #include "ui_testqt.h"
 #include "QFileDialog"
+#include "QFile"
+#include "QTextStream"
 #include "QMessageBox"
+
+using namespace std;
+
 
 testQT::testQT(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::testQT)
 {
     ui->setupUi(this);
-
     ui->fileName->setText("");
     ui->fileName->setReadOnly(true);
     ui->fileName->setText("");
-    ui->screen->setReadOnly(true);
+    ui->Run->setText("Waiting");
+    ui->Run->setEnabled(false);
+    ui->textScreen->setReadOnly(true);
     connect(ui->openFile, SIGNAL(released()), this, SLOT(onOpenFile()));
+    connect(ui->Run, SIGNAL(released()), this, SLOT(runFile()));
+
+
 }
 
 testQT::~testQT()
@@ -96,18 +104,45 @@ testQT::~testQT()
     delete ui;
 }
 
-void testQT::onOpenFile()
-{
-    QString file = QFileDialog::getOpenFileName(this, "Open a file", nullptr);
+void testQT::onOpenFile(){
+    QString fileIn = QFileDialog::getOpenFileName(this, "Open a file", nullptr);
+    ui->fileName->setText(fileIn);
+    ui->Run->setEnabled(true);
+    ui->openFile->setText("File");
+    ui->Run->setText("Run");
 
-    ui->fileName->setText(file);
-    
-    char * argv = "-s example/example.phy -m -JC -redo";
 }
 
 void testQT::runFile(){
-    char * x = "s";
+    int checkDone = EXIT_FAILURE;
+
+    ui->Run->setEnabled(false);
+    ui->openFile->setEnabled(false);
+
+    QString pathFile = ui->fileName->text();//path input file
+    QByteArray ba = pathFile.toLocal8Bit();
+    char *exampleFile = ba.data();
+    char *argv[] = {"./iqtree", "-s", exampleFile, "-redo", (char *)0 };
+
+    checkDone = mainIQTree(4, argv);
+    if(checkDone == EXIT_SUCCESS){
+
+        ui->Run->setText("Done");
+        QString inputFile = pathFile.section('/', -1);
+
+        QString outputFile = "example.cf.iqtree";
+
+        pathFile.replace(inputFile, outputFile);// change to path out put
+
+
+        QFile fileOut(pathFile);
+        fileOut.open(QIODevice::ReadOnly);
+
+        QTextStream instream(&fileOut);
+        ui->textScreen->setText(instream.readAll());
+    }
 }
+
 
 void generateRandomTree(Params &params)
 {
@@ -2223,7 +2258,7 @@ void collapseLowBranchSupport(char *user_file, char *split_threshold_str) {
 	main function
 ********************************************************/
 
-int mainIQTree(int argc, char *argv[]) {
+int testQT::mainIQTree(int argc, char *argv[]) {
 
     /*
     Instruction set ID reported by vectorclass::instrset_detect
@@ -2638,6 +2673,7 @@ int mainIQTree(int argc, char *argv[]) {
 	delete checkpoint;
 
 	finish_random();
-    
-	return EXIT_SUCCESS;
+
+    return EXIT_SUCCESS;
 }
+

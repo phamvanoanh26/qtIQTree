@@ -1,0 +1,11 @@
+IQ-TREE multicore version 1.6.12 for Linux 64-bit built Jun 14 2020
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    ubuntu (AVX, 1 GB RAM)
+Command: ./iqtree -s /home/penoze/Desktop/IQTreeProject/qtIQTree/example -m JC -redo
+Seed:    99185 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sun Jun 21 05:52:24 2020
+Kernel:  AVX - 1 threads (1 CPU cores detected)
+
+Reading alignment file /home/penoze/Desktop/IQTreeProject/qtIQTree/example ... ERROR: Cannot read file /home/penoze/Desktop/IQTreeProject/qtIQTree/example

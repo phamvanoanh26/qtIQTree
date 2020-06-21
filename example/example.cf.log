@@ -1,0 +1,47 @@
+IQ-TREE multicore version 1.6.12 for Linux 64-bit built Jun 14 2020
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    ubuntu (AVX, 1 GB RAM)
+Command: ./iqtree -s /home/penoze/Desktop/IQTreeProject/qtIQTree/example/example.cf -m JC -redo
+Seed:    963375 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sun Jun 21 05:52:38 2020
+Kernel:  AVX - 1 threads (1 CPU cores detected)
+
+Reading alignment file /home/penoze/Desktop/IQTreeProject/qtIQTree/example/example.cf ... Counts format (PoMo) detected
+
+----------------------------------------------------------------------
+Number of populations:     12
+Number of sites:           18850
+---
+Normal sites:              18806
+Sites with unknown states: 44
+Total sites read:          18850
+Fails:                     0
+---
+Compound states:           362
+----------------------------------------------------------------------
+
+The average number of samples is 14.663
+Alignment has 12 sequences with 18850 columns, 538 distinct patterns
+0 parsimony-informative, 881 singleton sites, 17969 constant sites
+NOTE: The composition test for PoMo only tests the proportion of fixed states!
+                                Gap/Ambiguity  Composition  p-value
+   1  Gorilla_beringei_graueri          0.00%    passed     99.60%
+   2  Gorilla_gorilla_dielhi            0.23%    passed     99.40%
+   3  Gorilla_gorilla_gorilla           0.00%    passed     99.77%
+   4  Homo_sapiens_afr                  0.00%    passed     99.97%
+   5  Homo_sapiens_nonAfr               0.00%    passed     99.92%
+   6  Pan_paniscus                      0.00%    passed     99.91%
+   7  Pan_troglodytes_ellioti           0.00%    passed     99.99%
+   8  Pan_troglodytes_schweinfurthii    0.00%    passed     99.80%
+   9  Pan_troglodytes_troglodytes       0.02%    passed     99.83%
+  10  Pan_troglodytes_verus             0.00%    passed     99.94%
+  11  Pongo_abelii                      0.00%    passed     99.84%
+  12  Pongo_pygmaeus                    0.00%    passed     99.94%
+****  TOTAL                             0.02%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: minimal branch length is increased to 0.000081000000 because PoMo infers number of mutations and frequency shifts
+NOTE: maximal branch length is increased to 810.0 because PoMo infers number of mutations and frequency shifts
+Creating fast initial parsimony tree by random order stepwise addition...
+0.001 seconds, parsimony score: 618 (based on 881 sites)
+ERROR: Provided alignment is exclusively used by PoMo but model string does not contain, e.g., "+P".
